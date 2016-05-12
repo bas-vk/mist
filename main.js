@@ -240,6 +240,12 @@ app.on('ready', function() {
 
     // instantiate custom protocols
     require('./customProtocols.js');
+    
+    // load swarm, swarm register protocols which can be done after the app is ready.
+    var swarm = require('./modules/swarm.js')
+    swarm.registerProtocol('http://localhost:8500', function(err) {
+    	console.error(err);
+    });
 
     // add menu already here, so we have copy and past functionality
     appMenu();
